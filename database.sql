@@ -33,20 +33,6 @@ VALUES
     (102, 2, '2023-01-16', 75.50),
     (103, 3, '2023-01-17', 200.25);
 
--- Create the Products table
-CREATE TABLE Products (
-    product_id INT PRIMARY KEY,
-    name VARCHAR(255),
-    description TEXT,
-    price DECIMAL(10, 2)
-);
-
-INSERT INTO Products (product_id, name, description, price)
-VALUES
-    (1001, 'Product A', 'Description of Product A', 20.00),
-    (1002, 'Product B', 'Description of Product B', 15.50),
-    (1003, 'Product C', 'Description of Product C', 30.75);
-
 
 -- Create the Categories table
 CREATE TABLE Categories (
@@ -59,6 +45,26 @@ VALUES
     (2001, 'Category X'),
     (2002, 'Category Y'),
     (2003, 'Category Z');
+
+-- Create the Products table
+
+CREATE TABLE Products (
+    product_id INT PRIMARY KEY,
+    name VARCHAR(255),
+    description TEXT,
+    price DECIMAL(10, 2),
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES Categories(category_id)
+);
+
+INSERT INTO Products (product_id, name, description, price)
+VALUES
+    (1001, 'Product A', 'Description of Product A', 20.00),
+    (1002, 'Product B', 'Description of Product B', 15.50),
+    (1003, 'Product C', 'Description of Product C', 30.75);
+
+
+
 
 -- Create the Order_Items table
 CREATE TABLE Order_Items (
